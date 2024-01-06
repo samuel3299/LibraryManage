@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "card")
@@ -23,7 +24,17 @@ public class Card {
     private Student studentVariable;
     @Enumerated(value = EnumType.STRING)
     private CardStatus cardStatus;
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+    List<Book> books;
     public Card() {
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public int getId() {
