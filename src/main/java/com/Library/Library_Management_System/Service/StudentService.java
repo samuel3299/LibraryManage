@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 public class StudentService {
     @Autowired
     StudentRepositior studentRepositior;
+
+    public Student getStudent(int id) {
+            return studentRepositior.findById(id).get();
+    }
+
     public String addStudent(Student student){
         Card card = new Card();
         card.setCardStatus(CardStatus.Active);
@@ -18,5 +23,18 @@ public class StudentService {
         student.setCard(card);
         studentRepositior.save(student);
         return " Student and Card are created!";
+    }
+
+    public String updateStudent(int id, String password) {
+        Student student = studentRepositior.findById(id).get();
+        student.setPassword(password);
+        studentRepositior.save(student);
+        return "Student updated Successfully";
+    }
+
+    public Student deleteStudent(int id) {
+        Student student = studentRepositior.findById(id).get();
+        studentRepositior.delete(student);
+        return student;
     }
 }

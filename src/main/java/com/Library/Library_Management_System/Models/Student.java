@@ -15,6 +15,8 @@ public class Student {
     private String name;
     @Column(unique = true)
     private String email;
+    @Column(unique = true)
+    private String password;
     @CreationTimestamp
     private Date studentCreated;
     @UpdateTimestamp
@@ -73,4 +75,11 @@ public class Student {
         this.card = card;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

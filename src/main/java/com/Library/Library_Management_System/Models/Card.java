@@ -14,6 +14,7 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String name;
     @CreationTimestamp
     private Date createdCard;
     @UpdateTimestamp
@@ -75,5 +76,13 @@ public class Card {
 
     public void setCardStatus(CardStatus cardStatus) {
         this.cardStatus = cardStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
